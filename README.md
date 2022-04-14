@@ -95,3 +95,47 @@ Port 8080 ist schon belegt
 
 ### Schritt 5
 Siehe GitLab
+
+## Praktikum 4
+
+### Aufgabe 1
+Siehe Blatt
+
+### Aufgabe 2
+Siehe Blatt
+
+### Aufgabe 3
+```bash
+kubectl config use-context luca.weinmann-kubernetes
+kubectl config set-context --current --namespace=cnc
+```
+
+### Aufgabe 4
+```bash
+kubectl create deployment pingpong-weinmann --image=jpetazzo/ping --replicas 3
+```
+
+### Aufgabe 5
+```bash
+kubectl scale deployment pingpong-weinmann --replicas 1
+```
+![Describe](pictures/Praktikum_4_Describe.png) <br>
+
+### Aufgabe 6
+´´´bash
+kubectl create deployment service-weinmann --image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service --replicas 1
+´´´
+
+### Aufgabe 7
+> IP: 10.244.10.13
+
+Conditions: <br>
+![Conditions](pictures/Praktikum_4_Conditions.png) <br>
+Events: <br>
+![Events](pictures/Praktikum_4_Events.png)
+
+### Aufgabe 8
+```bash
+kubectl get deployments
+kubectl delete deployment service-weinmann
+```
