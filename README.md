@@ -90,7 +90,7 @@ mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/s
 ### Schritt 4
 Port 8080 ist schon belegt
 ```bash
- docker run -p 8090:8080 docker.informatik.hs-furtwangen.de/cnc-weinmann/service
+docker run -p 8090:8080 docker.informatik.hs-furtwangen.de/cnc-weinmann/service
 ```
 
 ### Schritt 5
@@ -122,9 +122,9 @@ kubectl scale deployment pingpong-weinmann --replicas 1
 ![Describe](pictures/Praktikum_4_Describe.png) <br>
 
 ### Aufgabe 6
-´´´bash
+```bash
 kubectl create deployment service-weinmann --image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service --replicas 1
-´´´
+```
 
 ### Aufgabe 7
 > IP: 10.244.10.13
@@ -139,3 +139,46 @@ Events: <br>
 kubectl get deployments
 kubectl delete deployment service-weinmann
 ```
+
+## Praktikum 5
+### Aufgabe 1
+```bash
+bubectl get deployments
+kubectl delete deployments pingpong-weinmann
+```
+### Aufgabe 2
+```bash
+kubectl apply -f .\pod.yaml
+kubectl get pods
+kubectl delete pods service-weinmann
+kubectl get pods
+```
+### Aufgabe 3
+```bash
+kubectl apply -f .\pod.yaml
+kubectl describe pod service-weinmann
+kubectl delete pods service-weinmann
+```
+
+### Aufgabe 4
+![State](pictures/Praktikum_5_State.png)
+```bash
+kubectl delete pods service-weinmann
+```
+
+### Aufgabe 5
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+kubectl apply -f .\pod.yaml
+kubectl get pods
+kubectl describe pod service-weinmann
+```
+![LivenessReadiness](pictures/Praktikum_5_Liveness_Readiness.png)
+
+### Aufgabe 6
+```bash
+kubectl port-forward service-weinmann 8080:8080
+```
+![LivenessForwarded](pictures/Praktikum_5_Liveness_Port_Forwarded.png)
+
+### Aufgabe 7
