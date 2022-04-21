@@ -180,5 +180,3 @@ kubectl describe pod service-weinmann
 kubectl port-forward service-weinmann 8080:8080
 ```
 ![LivenessForwarded](pictures/Praktikum_5_Liveness_Port_Forwarded.png)
-
-### Aufgabe 7
