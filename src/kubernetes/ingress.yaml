@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-weinmann
+spec:
+  rules:
+    - host: kube.informatik.hs-furtwangen.de
+      http:
+        paths:
+          - path: "/weinmann"
+            pathType: Prefix
+            backend:
+              service:
+                name: service-weinmann
+                port:
+                  number: 80

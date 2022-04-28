@@ -180,3 +180,37 @@ kubectl describe pod service-weinmann
 kubectl port-forward service-weinmann 8080:8080
 ```
 ![LivenessForwarded](pictures/Praktikum_5_Liveness_Port_Forwarded.png)
+
+
+## Praktikum 6
+
+### Aufgabe 2
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+```
+
+### Aufgabe 3
+```bash
+kubectl apply -f deployment.yaml
+kubectl get pods
+```
+
+### Aufgabe 4
+```bash
+kubectl apply -f service.yaml
+kubectl get services
+kubectl port-forward service/service-weinmann 8080:80
+```
+
+### Aufgabe 5
+```bash
+kubectl apply -f ingress.yaml
+kubectl get ingress
+```
+Rückgabewerte:
+- service-weinmann-7b8fb9cbd-vprcs
+- service-weinmann-7b8fb9cbd-ktwfl
+- service-weinmann-7b8fb9cbd-x2jn4
+- service-weinmann-7b8fb9cbd-vprcs
+- service-weinmann-7b8fb9cbd-ktwfl
+
