@@ -1,3 +1,11 @@
 server:
   servlet:
     context-path: /weinmann
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "info, health, prometheus"
+  metrics:
+    tags:
+      application: service-weinmann

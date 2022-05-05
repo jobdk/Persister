@@ -214,3 +214,35 @@ Rückgabewerte:
 - service-weinmann-7b8fb9cbd-vprcs
 - service-weinmann-7b8fb9cbd-ktwfl
 
+## Praktikum 7
+
+### Aufgabe 1
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+kubectl delete pods -l author=weinmann
+```
+
+### Aufgabe 2
+```bash
+kubectl port-forward service/service-weinmann 8080:80
+```
+
+### Aufgabe 3
+Davor noch die service.yaml Datei anpassen.
+```bash
+kubectl apply -f service.yaml
+kubectl apply -f servicemonitor.yaml
+```
+
+### Aufgabe 4
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+kubectl delete pods -l author=weinmann
+```
+
+### Aufgabe 7
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+kubectl delete pods -l author=weinmann
+kubectl logs -l author=weinmann
+```
