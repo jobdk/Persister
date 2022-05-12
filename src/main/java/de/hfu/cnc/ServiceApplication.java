@@ -30,7 +30,7 @@ public class ServiceApplication {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Cloud Native Computing!";
+		return "Cloud Native Computing updated!";
 	}
 
     @RequestMapping("/host.html")
