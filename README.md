@@ -246,3 +246,19 @@ mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/s
 kubectl delete pods -l author=weinmann
 kubectl logs -l author=weinmann
 ```
+
+## Praktikum 8
+
+### Aufgabe 1
+```bash
+kubectl delete serviceMonitor servicemonitor-weinmann
+kubectl delete ingress ingress-weinmann
+kubectl delete service service-weinmann
+kubectl delete deployment service-weinmann
+```
+
+```Aufgabe 4
+helm install service-weinmann src/charts/service
+```
+
+

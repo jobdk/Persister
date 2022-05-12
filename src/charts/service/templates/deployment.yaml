@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-{{ .Values.author }}
+  labels:
+    app: service
+    author: {{ .Values.author }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: service
+      author: {{ .Values.author }}
+  template:
+    metadata:
+      labels:
+        app: service
+        author: {{ .Values.author }}
+    spec:
+      containers:
+        - name: service-container
+          image: {{ .Values.image }}
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              memory: 32Mi
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.readinessDelay }}
+            httpGet:
+              path: {{ .Values.author }}/actuator/health/readiness
+              port: {{ .Values.port }}
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.livenessDelay }}
+            httpGet:
+              path: {{ .Values.author }}/actuator/health/liveness
+              port: {{ .Values.port }}

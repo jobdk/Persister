@@ -1,16 +1,16 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: servicemonitor-weinmann
+  name: servicemonitor-{{ .Values.author }}
   labels:
     app: service
-    author: weinmann
+    author: {{ .Values.author }}
 spec:
   endpoints:
     - interval: 30s
-      path: /weinmann/actuator/prometheus
+      path: /{{ .Values.author }}/actuator/prometheus
       port: web
   selector:
     matchLabels:
       app: service
-      author: weinmann
+      author: {{ .Values.author }}
