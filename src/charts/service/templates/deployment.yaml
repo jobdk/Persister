@@ -20,6 +20,9 @@ spec:
       containers:
         - name: service-container
           image: {{ .Values.image }}
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: service-{{ .Values.author }}-mongodb
           resources:
             limits:
               memory: 256Mi

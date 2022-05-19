@@ -3,3 +3,7 @@ name: service-weinmann
 version: 0.1.0
 appVersion: "1.0"
 description: Helm chart for a cnc service
+dependencies:
+  - name: mongodb
+    version: 10.1.3
+    repository: https://charts.bitnami.com/bitnami

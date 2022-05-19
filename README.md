@@ -257,8 +257,22 @@ kubectl delete service service-weinmann
 kubectl delete deployment service-weinmann
 ```
 
-```Aufgabe 4
+### Aufgabe 4
+```bash
 helm install service-weinmann src/charts/service
 ```
 
+## Praktikum 9
+### Aufgabe 1
+```bash
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+helm delete service-weinmann
+helm dependency update ./src/charts/service
+helm install service-weinmann src/charts/service
+```
 
+### Aufgabe 2
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+skaffold dev
+```
