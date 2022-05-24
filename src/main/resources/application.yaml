@@ -9,3 +9,14 @@ management:
   metrics:
     tags:
       application: service-weinmann
+service:
+  backend: "http://localhost:8080/weinmann"
+  routingKey: "weinmann"
+spring:
+  rabbitmq:
+    port: 5672
+    username: cnc
+    password: cnc
+    virtual-host: /cnc
+    ssl:
+      enabled: false

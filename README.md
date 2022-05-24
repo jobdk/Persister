@@ -276,3 +276,19 @@ helm install service-weinmann src/charts/service
 helm repo add bitnami https://charts.bitnami.com/bitnami
 skaffold dev
 ```
+
+## Praktikum 10
+Löschen für das neue Deployment
+```bash
+kubectl delete serviceMonitor servicemonitor-weinmann
+kubectl delete ingress ingress-weinmann
+kubectl delete service service-weinmann
+kubectl delete deployment service-weinmann
+```
+
+```bash 
+mvn compile jib:build -D"image=docker.informatik.hs-furtwangen.de/cnc-weinmann/service"
+helm delete service-weinmann
+helm dependency update ./src/charts/service
+helm install service-weinmann src/charts/service
+```

@@ -23,6 +23,8 @@ spec:
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: service-{{ .Values.author }}-mongodb
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq.rabbitmq
           resources:
             limits:
               memory: 256Mi
