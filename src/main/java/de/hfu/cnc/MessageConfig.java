@@ -24,7 +24,8 @@ public class MessageConfig {
     }
 
     @Bean
-    public Binding binding1(DirectExchange direct, Queue queue,
+    public Binding binding1(DirectExchange direct,
+                            Queue queue,
                             @Value("${service.routingKey}") String routingKey) {
         return BindingBuilder.bind(queue)
                 .to(direct)
