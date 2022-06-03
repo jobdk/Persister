@@ -1,4 +1,4 @@
-# Luca Weinmann
+# Luca Weinmann 
 
 ## Praktikum 2
 
