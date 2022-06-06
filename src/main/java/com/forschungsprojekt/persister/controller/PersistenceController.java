@@ -1,7 +1,9 @@
 package com.forschungsprojekt.persister.controller;
 
 import com.forschungsprojekt.persister.data.ImageInformation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
