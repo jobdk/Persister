@@ -9,15 +9,17 @@ import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 
 @RestController
 public class PersistenceController {
 
-    @PostMapping("/image")
-    public void addUser(@RequestBody ImageInformation imageInformation) throws IOException {
+    @PostMapping("/persistimage")
+    public void persistImage(@RequestBody ImageInformation imageInformation) throws IOException {
         byte[] bytes = DatatypeConverter.parseBase64Binary(imageInformation.imageAsBase64);
-        BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
-        // todo save image
+        BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
+        File outputfile = new File(imageInformation.fileName.concat(".").concat(imageInformation.fileExtension));
+        ImageIO.write(bufferedImage, imageInformation.fileExtension, outputfile);
     }
 }
