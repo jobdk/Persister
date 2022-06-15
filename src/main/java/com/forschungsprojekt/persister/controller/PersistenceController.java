@@ -9,21 +9,17 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("persist")
 public class PersistenceController {
 
     private static final String RESULT = "result";
-    private static final String SEPERATOR = "_";
+    private static final String SEPARATOR = "_";
     private static final String DOT = ".";
     private static final String DATE_PATTERN = "dd-MM-yyyy_HH:mm:ss";
-
     private static final File DOCKER_PATH = new File("/var/tmp");
-
     private static final String RESULT_FILE_EXTENSION = ".txt";
 
     /**
@@ -43,9 +39,9 @@ public class PersistenceController {
 
     private void createResultFile(ImageInformation imageInformation) throws IOException {
         File resultFile = new File(DOCKER_PATH, imageInformation.name
-                .concat(SEPERATOR)
+                .concat(SEPARATOR)
                 .concat(convertTime(imageInformation.time))
-                .concat(SEPERATOR)
+                .concat(SEPARATOR)
                 .concat(RESULT)
                 .concat(RESULT_FILE_EXTENSION));
 
@@ -59,7 +55,7 @@ public class PersistenceController {
 
     private void createImageFile(ImageInformation imageInformation) throws IOException {
         File imageFile = new File(DOCKER_PATH, imageInformation.name
-                .concat(SEPERATOR)
+                .concat(SEPARATOR)
                 .concat(convertTime(imageInformation.time))
                 .concat(DOT)
                 .concat(imageInformation.extension));
