@@ -1,10 +1,10 @@
-package de.hfu.cnc;
+package com.forschungsprojekt.persister;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServiceApplicationTests {
+class PersisterApplicationTests {
 
 	@Test
 	void contextLoads() {
