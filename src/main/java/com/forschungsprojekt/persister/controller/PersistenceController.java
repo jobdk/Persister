@@ -42,7 +42,6 @@ public class PersistenceController {
     }
 
     private void createResultFile(ImageInformation imageInformation) throws IOException {
-        // todo lookup if already exists don't overwrite
         FileWriter file = new FileWriter(imageInformation.name
                 .concat(SEPERATOR)
                 .concat(convertTime(imageInformation.time))
