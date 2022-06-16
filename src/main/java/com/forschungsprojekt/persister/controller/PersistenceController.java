@@ -1,12 +1,19 @@
 package com.forschungsprojekt.persister.controller;
 
 import com.forschungsprojekt.persister.data.ImageInformation;
-import org.springframework.web.bind.annotation.*;
+import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,11 +52,10 @@ public class PersistenceController {
                 .concat(RESULT)
                 .concat(RESULT_FILE_EXTENSION));
 
-        if (resultFile.exists()) return;
         resultFile.createNewFile();
 
         FileWriter file = new FileWriter(resultFile);
-        file.write(imageInformation.result);
+        file.write(new Gson().toJson(imageInformation.result));
         file.close();
     }
 
@@ -60,7 +66,7 @@ public class PersistenceController {
                 .concat(DOT)
                 .concat(imageInformation.extension));
 
-        if(imageFile.exists()) return;
+        if (imageFile.exists()) return;
         imageFile.createNewFile();
 
         byte[] bytes = DatatypeConverter.parseBase64Binary(imageInformation.image);
