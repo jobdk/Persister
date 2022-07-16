@@ -1,6 +1,9 @@
-# Persister bauen und starten
+# Persister
+Der Persister ist für das speichern der Bilder und Ergebnisse verantwortlich, da es von OpenFaaS keinen Zugriff das
+Dateisystem des Servers gibt.
 
-Im root des Projekts
+## Persister bauen und starten
+Im root des Projekts folgende Befehle ausführen:
 
 ```bash
 mvn clean install
