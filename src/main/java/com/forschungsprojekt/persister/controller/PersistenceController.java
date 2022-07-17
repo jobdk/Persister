@@ -30,8 +30,9 @@ public class PersistenceController {
     private static final String RESULT_FILE_EXTENSION = ".txt";
 
     /**
-     * is called when a new image is sent for evaluation
-     * persists image and result
+     * REST-Endpoint for persiting a new image and its results
+     * @param imageInformation Object which specifies image as base64 String and results
+     * @throws IOException
      */
     @PostMapping("/imageandresult")
     public void persistImage(@RequestBody ImageInformation imageInformation) throws IOException {
@@ -39,11 +40,21 @@ public class PersistenceController {
         createResultFile(imageInformation);
     }
 
+    /**
+     * REST-Endpoint for pesisting manually changed result
+     * @param imageInformation Object which specifies new results
+     * @throws IOException
+     */
     @PostMapping("/result")
     public void persistResult(@RequestBody ImageInformation imageInformation) throws IOException {
         createResultFile(imageInformation);
     }
 
+    /**
+     * Creating the result text file which is persisted.
+     * @param imageInformation Object which specifies new results
+     * @throws IOException
+     */
     private void createResultFile(ImageInformation imageInformation) throws IOException {
         File resultFile = new File(DOCKER_PATH, imageInformation.name
                 .concat(SEPARATOR)
@@ -58,7 +69,11 @@ public class PersistenceController {
         file.write(new Gson().toJson(imageInformation.result));
         file.close();
     }
-
+    /**
+     * Creating the Image file which is persisted.
+     * @param imageInformation Object which specifies image
+     * @throws IOException
+     */
     private void createImageFile(ImageInformation imageInformation) throws IOException {
         File imageFile = new File(DOCKER_PATH, imageInformation.name
                 .concat(SEPARATOR)
@@ -74,6 +89,11 @@ public class PersistenceController {
         ImageIO.write(bufferedImage, imageInformation.extension, imageFile);
     }
 
+    /**
+     * Convertion of time, as time is long value
+     * @param time as long value
+     * @return time as readable value
+     */
     public String convertTime(long time) {
         Date date = new Date(time);
         Format format = new SimpleDateFormat(DATE_PATTERN);
